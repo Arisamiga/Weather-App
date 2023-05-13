@@ -27,8 +27,38 @@ body {
 }
 
 .card-body {
-    margin: 0;
-    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    gap: 20px;
+}
+.card-body input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.card-body button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #87CEEB;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.card-body button:hover {
+    background-color: #ffffff;
+    color: #87CEEB;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .card-footer {
@@ -42,3 +72,30 @@ body {
     text-align: center;
 }
 
+#result {
+    background-color: #ffffff;
+    border-radius: 0.5em;
+    box-shadow: 0 0.125em 0.25em 0 rgba(0, 0, 0, 0.125);
+    margin: 1em;
+    padding: 1em;
+    text-align: center;
+    color: black;
+    display: none;
+}
+.openWM {
+    background-color: #87CEEB;
+    border-radius: 0.5em;
+    color: #ffffff;
+    font-size: 1.0em;
+    font-weight: bold;
+    padding: 0.5em;
+    text-align: center;
+    cursor: pointer;
+    display: none;
+    margin: 14px 0 0 0;
+}
+
+#openWM-R {
+    padding-top: 14px;
+    display: none;
+}
