@@ -1,10 +1,11 @@
 function search() {
+  clearResults();
   const city = document.getElementById("city").value;
   console.log(city);
   // Call wttr API
   fetch(`https://wttr.in/${city}?format=j1`)
-    .then((response) => response.json())
-    .then((data) => {
+    .then(async (response) => {
+      var data = await response.json();
       console.log(data);
       writeResults(
         data,
@@ -14,7 +15,8 @@ function search() {
         data.current_condition[0].weatherDesc[0].value,
         data.current_condition[0].humidity,
         data.current_condition[0].pressure,
-        toWeatherIcon(data.current_condition[0].weatherDesc[0].value)
+        toWeatherIcon(data.current_condition[0].weatherDesc[0].value),
+        response.status
       );
     })
     .catch((err) => {
@@ -23,9 +25,11 @@ function search() {
     });
   // Call goweatherapp API
   fetch(`https://goweather.herokuapp.com/weather/${city}`)
-    .then((response) => response.json())
-    .then((data) => {
+    .then(async (response) => {
+      data = await response.json();
       console.log(data);
+      var code = response.status;
+      if (data.wind == "") code = 404;
       writeResults(
         data,
         "goW",
@@ -34,7 +38,8 @@ function search() {
         data.description,
         "Not available",
         "Not available",
-        toWeatherIcon(data.description)
+        toWeatherIcon(data.description),
+        code
       );
     })
     .catch((err) => {
@@ -45,8 +50,9 @@ function search() {
   fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=9de243494c0b295cca9337e1e96b00e2&units=metric`
   )
-    .then((response) => response.json())
-    .then((data) => {
+    .then(async (response) => {
+      var data = await response.json();
+
       writeResults(
         data,
         "openWM",
@@ -55,13 +61,48 @@ function search() {
         data.weather[0].main,
         data.main.humidity,
         data.main.pressure,
-        data.weather[0]["icon"]
+        data.weather[0]["icon"],
+        response.status
       );
     })
     .catch((err) => {
       alert("2Wrong city name");
       console.log(err);
     });
+}
+
+function clearResults() {
+  var wp = ["wttr", "goW", "openWM"];
+  wp.forEach((wp) => {
+    document.getElementsByClassName(wp)[0].style.display = "none";
+    document.getElementById(wp + "-R").style.display = "none";
+  });
+  document.getElementById("result").style.display = "none";
+  document.getElementById("city-name").innerHTML = "";
+  document.getElementById("country").innerHTML = "";
+  var idsToClear = [
+    "openWM-temp",
+    "openWM-weather",
+    "openWM-humidity",
+    "openWM-pressure",
+    "openWM-wind",
+    "openWM-weather-icon",
+    "wttr-temp",
+    "wttr-weather",
+    "wttr-humidity",
+    "wttr-pressure",
+    "wttr-wind",
+    "wttr-weather-icon",
+    "goW-temp",
+    "goW-weather",
+    "goW-humidity",
+    "goW-pressure",
+    "goW-wind",
+    "goW-weather-icon",
+  ];
+  idsToClear.forEach((id) => {
+    document.getElementById(id).innerHTML = "";
+  });
 }
 
 function toWeatherIcon(icon) {
@@ -158,10 +199,11 @@ function writeResults(
   description,
   humidity,
   pressure,
-  icon
+  icon,
+  code
 ) {
   console.log(wp, data);
-  //   if (data.cod != 200 && !data.wind) return alert("1Wrong city name");
+  if (code != 200) return alert("1Wrong city name");
   let regionNames = new Intl.DisplayNames(["en"], { type: "region" });
   document.getElementById("result").style.display = "block";
   document.getElementsByClassName(wp)[0].style.display = "block";
