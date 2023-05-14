@@ -70,6 +70,10 @@ body {
     margin: 0;
     padding: 0.5em;
     text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+
 }
 
 #result {
@@ -81,6 +85,7 @@ body {
     text-align: center;
     color: black;
     display: none;
+    max-width: 20vw;
 }
 .rWP {
     background-color: #87CEEB;
@@ -94,7 +99,12 @@ body {
     display: none;
     margin: 14px 0 0 0;
 }
-
+.rWP:hover {
+    background-color: #e7e7e7;
+    color: #f8fcfd;
+    font-weight: bold;
+    cursor: pointer;
+}
 .R-Dropdown{
     padding-top: 14px;
     display: none;

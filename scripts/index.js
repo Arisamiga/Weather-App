@@ -1,6 +1,7 @@
 function search() {
   clearResults();
   const city = document.getElementById("city").value;
+  if(!city) return alert("Please enter a city name")
   console.log(city);
   // Call wttr API
   fetch(`https://wttr.in/${city}?format=j1`)
