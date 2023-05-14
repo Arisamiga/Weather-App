@@ -89,7 +89,7 @@ body {
     padding: 0.5em;
     text-align: center;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     justify-items: center;
 }
@@ -129,8 +129,8 @@ body {
     padding-top: 14px;
     display: none;
 }
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .card-footer {
         grid-template-columns: 1fr;
     }
-}
+} */
