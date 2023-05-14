@@ -113,7 +113,7 @@ function writeResults(
   document.getElementById(wp + "-wind").innerHTML = "Wind: " + wind;
   document.getElementById(
     wp + "-weather-icon"
-  ).src = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${icon}.svg`;
+  ).src = `https://openweathermap.org/img/wn/${icon}.png`;
 }
 
 document.addEventListener("click", function (e) {
