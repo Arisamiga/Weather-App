@@ -82,7 +82,7 @@ body {
     color: black;
     display: none;
 }
-.openWM {
+.rWP {
     background-color: #87CEEB;
     border-radius: 0.5em;
     color: #ffffff;
@@ -95,7 +95,7 @@ body {
     margin: 14px 0 0 0;
 }
 
-#openWM-R {
+.R-Dropdown{
     padding-top: 14px;
     display: none;
 }
