@@ -3,6 +3,7 @@ function search() {
   createNewResultsElements();
   const city = document.getElementById("city").value;
   if (!city) return alert("Please enter a city name");
+  if (city.length <= 3) return alert("Please enter a valid city name");
   console.log(city);
   document.getElementById("search").disabled = true;
   document.getElementById("search").innerHTML = "Searching...";
