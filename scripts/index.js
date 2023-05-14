@@ -4,6 +4,8 @@ function search() {
   const city = document.getElementById("city").value;
   if (!city) return alert("Please enter a city name");
   console.log(city);
+  document.getElementById("search").disabled = true;
+  document.getElementById("search").innerHTML = "Searching...";
   setTimeout(() => {
     // Call goweatherapp API
     fetch(`https://goweather.herokuapp.com/weather/${city}`)
@@ -73,6 +75,10 @@ function search() {
         console.log(err);
       });
   }, 2000);
+  setTimeout(() => {
+    document.getElementById("search").disabled = false;
+    document.getElementById("search").innerHTML = "Search";
+  }, 5000);
 }
 
 function writeResults(

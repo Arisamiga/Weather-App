@@ -24,6 +24,11 @@ body {
     margin: 0;
     padding: 0.5em;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
 }
 
 .card-body {
@@ -53,6 +58,19 @@ body {
     font-weight: bold;
     cursor: pointer;
 }
+.card-body button:disabled {
+    background-color: #e7e7e7;
+    color: #f8fcfd;
+    font-weight: bold;
+    cursor: not-allowed;
+}
+
+.card-body button:disabled:hover {
+    background-color: #e7e7e7;
+    color: #f8fcfd;
+    font-weight: bold;
+    cursor: not-allowed;
+}
 
 .card-body button:hover {
     background-color: #ffffff;
@@ -73,19 +91,20 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
-
+    justify-items: center;
 }
 
 .result {
     background-color: #ffffff;
     border-radius: 0.5em;
     box-shadow: 0 0.125em 0.25em 0 rgba(0, 0, 0, 0.125);
-    margin: 1em;
-    padding: 1em;
+    margin: 1rem;
+    padding: 1rem;
     text-align: center;
     color: black;
     display: none;
-    max-width: 20vw;
+    max-width: 40vw;
+    min-width: 330px;
 }
 .rWP {
     background-color: #87CEEB;
@@ -105,7 +124,13 @@ body {
     font-weight: bold;
     cursor: pointer;
 }
+
 .R-Dropdown{
     padding-top: 14px;
     display: none;
+}
+@media (max-width: 768px) {
+    .card-footer {
+        grid-template-columns: 1fr;
+    }
 }
