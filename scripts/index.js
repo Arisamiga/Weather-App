@@ -27,7 +27,7 @@ function search() {
         );
       })
       .catch((err) => {
-        alert("3Wrong city name");
+        alert("Cannot Find City Name");
         console.log(err);
       });
     // Call wttr API
@@ -48,7 +48,7 @@ function search() {
         );
       })
       .catch((err) => {
-        alert("4Wrong city name");
+        alert("Cannot Find City Name");
         console.log(err);
       });
     // Call the openweatherapp API
@@ -71,7 +71,7 @@ function search() {
         );
       })
       .catch((err) => {
-        alert("2Wrong city name");
+        alert("Cannot Find City Name");
         console.log(err);
       });
   }, 2000);
@@ -94,7 +94,7 @@ function writeResults(
 ) {
   console.log(wp, temp, wind, description, humidity, pressure, icon, code);
   console.log(wp, data);
-  if (code != 200) return alert("1Wrong city name");
+  if (code != 200) return alert("Cannot Find City Name");
   wp = index + wp;
   console.log(index);
   let regionNames = new Intl.DisplayNames(["en"], { type: "region" });
